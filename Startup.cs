@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OdeToFood.Data;
+
+
 
 namespace OdeToFood
 {
@@ -22,8 +25,14 @@ namespace OdeToFood
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+
+
         public void ConfigureServices(IServiceCollection services)
         {
+            //Single instance of especific service for the entire app - FOR TEST, because a List in production enviorment on a real database is a corrupted solution
+            services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
+
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
