@@ -3,9 +3,13 @@
 @{
     ViewData["Title"] = "Detail";
 }
-<!--Os tag helpers asp- utilizados na view, são inteligentes para olhar a rota e verificar quais parametros estão sendo demandados, passando na url-->
+<!--Os tag helpers asp- utilizados na view, são inteligentes para olhar a rota e verificar quais parametros estão sendo demandados, passando na url. Eles conhecem as paginas e entendem os parametros-->
 <!-- o {id} ao lado de page refere-se a estarmos adicionando um segmento a url, que contem o parametro Id, logo para chegar nesta página a url deve ter /Restaurants/Detail/SomeIdentifier -->
 <!--Adicionando o ? ao lado de id torna o parametro opicional, ex: page "{id?:int}"-->
+
+
+
+
 <h2>@Model.Restaurant.Name</h2>
 <div>
     Id: @Model.Restaurant.Id
