@@ -9,13 +9,13 @@
 <br />
 <!--Método get para realizar operação de leitura-->
 <!--Action com / pois deseja-se que esta mesma pagina seja responsavel por processar o form-->
+<!--asp-for: Tag Helper que trabalha com validação de model biding e asp.net core, funciona com input tags e labels tags
+               Este helper muda a ancorda para apontar para uma pagina especifica do sistema
+               "Essa é a propriedade que voce encontrata no model"-->
 <form method="get">
     <div class="form-group">
         <div class="input-group">
-            <!--asp-for: Tag Helper que trabalha com validação de model biding e asp.net core, funciona com input tags e labels tags
-                Este helper muda a ancorda para apontar para uma pagina especifica do sistema
-                "Essa é a propriedade que voce encontrata no model"-->
-            <input type="search" class="form-control" name="searchTerm" asp-for="SearchTerm"  value="" />
+            <input type="search" class="form-control" name="searchTerm" asp-for="SearchTerm" value="" />
             <span class="input-group-btn">
                 <button class="btn btn-default">
                     <i class="glyphicon glyphicon-search"></i>
@@ -28,12 +28,21 @@
 </form>
 
 <table class="table">
-   @foreach(var restaurant in Model.Restaurants)
-   {
-    <tr>
-        <td>@restaurant.Name</td>
-        <td>@restaurant.Location</td>
-        <td>@restaurant.Cuisine</td>
-    </tr>
-   }
+    @foreach (var restaurant in Model.Restaurants)
+    {
+        <tr>
+            <td>@restaurant.Name</td>
+            <td>@restaurant.Location</td>
+            <td>@restaurant.Cuisine</td>
+            <td>
+                <!-- Poderia ser feito assim também: <a class="btn btn-lg" href="/Restaurants/Detail?restaurantId=restaurant.Id"> usando o arrouba antes restaurant.Id para invocar o helper do asp.net-->
+                <a class="btn btn-lg"
+                   asp-page="./Detail"
+                   asp-route-restaurantId="@restaurant.Id">
+                    <!-- com o outro - podemos enviar um parametro proprio-->
+                    <i class="glyphicon glyphicon-zoom-in"> </i>
+                </a>
+            </td>
+        </tr>
+    }
 </table>
