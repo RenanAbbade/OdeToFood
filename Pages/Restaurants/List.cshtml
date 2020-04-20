@@ -9,10 +9,13 @@
 <br />
 <!--Método get para realizar operação de leitura-->
 <!--Action com / pois deseja-se que esta mesma pagina seja responsavel por processar o form-->
-<form action="/" method="get">
+<form method="get">
     <div class="form-group">
         <div class="input-group">
-            <input type="search" class="form-control"  value="" />
+            <!--asp-for: Tag Helper que trabalha com validação de model biding e asp.net core, funciona com input tags e labels tags
+                Este helper muda a ancorda para apontar para uma pagina especifica do sistema
+                "Essa é a propriedade que voce encontrata no model"-->
+            <input type="search" class="form-control" name="searchTerm" asp-for="SearchTerm"  value="" />
             <span class="input-group-btn">
                 <button class="btn btn-default">
                     <i class="glyphicon glyphicon-search"></i>
