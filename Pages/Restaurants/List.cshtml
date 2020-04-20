@@ -3,14 +3,26 @@
 @{
 }
 
-
 <h1>Restaurants</h1>
-
-
-
 
 <div>@Model.Message</div>
 <br />
+<!--Método get para realizar operação de leitura-->
+<!--Action com / pois deseja-se que esta mesma pagina seja responsavel por processar o form-->
+<form action="/" method="get">
+    <div class="form-group">
+        <div class="input-group">
+            <input type="search" class="form-control"  value="" />
+            <span class="input-group-btn">
+                <button class="btn btn-default">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </span>
+        </div>
+
+    </div>
+
+</form>
 
 <table class="table">
    @foreach(var restaurant in Model.Restaurants)
